@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "billboard-top-100": "^2.6.5",
+    "dotenv": "^16.4.5",
+    "genius-lyrics-api": "^3.2.0"
+  }
+}
