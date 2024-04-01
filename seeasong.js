@@ -23,12 +23,6 @@ import "dotenv/config.js";
 const openai = new OpenAI({
     apiKey: process.env['OPENAI_API_KEY'], 
 });
-  
-
-let imageOptions = {
-    url: 'http://someurl.com/image.jpg',
-    dest: '/path/to/dest',               // will be saved to /path/to/dest/image.jpg
-}; 
 
 const promptCarousel = 
 ["award-winning photograph, Sigma 85 mm f/8, Slow Shutter Speed, Golden Hour Lighting, Uneven skin tone",
@@ -103,7 +97,6 @@ const promptCarousel =
 "made from recycled materials",
 "made from found objects",
 "made from food"
-
 ]
 
 const DELAY = 1000*15;
@@ -134,6 +127,7 @@ function drawSong(title, artist, delay) {
                         let prompt = ` about ${title} by ${artist} that captures the tone and essential message of the following lyrics without using any typographical elements  ${lyrics}`;
                         if (applyStyle) {
                             let style = `${promptCarousel[Math.floor(Math.random() * promptCarousel.length)]}`;
+                            //style = "";
                             console.log(style);
                             prompt = `${style} of ${prompt}`;
                         }
@@ -189,6 +183,7 @@ function drawAlbum(albumName, artistName) {
             const data = await response.json();
             let alreadyFound = false;
             console.log(request);
+            console.log(data);  
             data.data.forEach((album, i) => {
                 if (alreadyFound || album.album.title !== albumName) { return; }
                 alreadyFound = true;
